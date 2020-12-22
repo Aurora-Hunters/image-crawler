@@ -1,10 +1,8 @@
-# node-docker-app
+# Image crawler
 
-Skeleton for dokerized Node.js app
+Get images from target urls regularly.
 
-## How to run
-
-Copy `example.env` file to `.env` and fill the gaps.
+Keep an eye out for webcams or any other images that update occasionally. 
 
 ### Development
 
