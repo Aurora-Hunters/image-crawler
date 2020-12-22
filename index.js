@@ -3,6 +3,8 @@ const path = require('path');
 const fs = require('fs');
 const getImagesDir = require('./tools/get-images-dir');
 const downloadImage = require('./tools/download-image');
+const createVideo = require('./tools/create-video');
+const removeDuplicatedFiles = require('./tools/delete-duplicate-files');
 
 const SOURCES = [
     {
@@ -76,6 +78,10 @@ const SOURCES = [
     {
         name: 'solar-c3',
         url: 'https://sohowww.nascom.nasa.gov/data/realtime/c3/512/latest.jpg'
+    },
+    {
+        name: 'geospace-1-day',
+        url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'
     }
 ];
 
@@ -85,7 +91,7 @@ const getLatestImage = function (url, pathToSave) {
     return downloadImage(url, pathToSave);
 };
 
-const generatePath = function (name) {
+const generateImagesPath = function (name) {
     const date = new Date();
     const datestamp = `${date.getFullYear()}-${(date.getMonth() + 1) < 10 ? '0' : ''}${date.getMonth() + 1}-${date.getDate() < 10 ? '0' : ''}${date.getDate()}-${date.getHours() < 10 ? '0' : ''}${date.getHours()}-${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}`;
 
@@ -98,10 +104,87 @@ const generatePath = function (name) {
     return path.join(imagesDir, name, `${datestamp}.jpg`);
 };
 
+const generateGifsPath = function (name) {
+    const gifsDir = path.join(__dirname, 'gifs');
+
+    if (!fs.existsSync(path.join(gifsDir, name))) {
+        fs.mkdirSync(path.join(gifsDir, name), { recursive: true });
+    }
+
+    return path.join(gifsDir, name, `latest.mp4`);
+};
+
+/**
+ * Get images
+ */
 cron.schedule('* * * * *', async () => {
     for (let i = 0; i < SOURCES.length; i++) {
         console.log(`Downloading... ${SOURCES[i].name} ${SOURCES[i].url}`);
 
-        await getLatestImage(SOURCES[i].url, generatePath(SOURCES[i].name));
+        const imagePath = generateImagesPath(SOURCES[i].name);
+
+        await getLatestImage(SOURCES[i].url, imagePath);
+
+        removeDuplicatedFiles(path.dirname(imagePath));
+
+        try {
+            fs.unlinkSync(path.join(path.dirname(imagePath), '.DS_Store'))
+        } catch (e) {}
     }
 });
+
+/**
+ * Create gifs
+ */
+
+const createGifs = async () => {
+    for (let i = 0; i < SOURCES.length; i++) {
+        const gifPath = generateGifsPath(SOURCES[i].name);
+        const imagesPath = path.join(__dirname, 'images', SOURCES[i].name)
+
+        console.log(gifPath);
+
+        try {
+            await fs.readdir(imagesPath, async function (err, files) {
+                console.log(`Creating a gif for ${SOURCES[i].name}`);
+
+                files = files.map(function (fileName) {
+                    return {
+                        name: fileName,
+                        time: fs.statSync(imagesPath + '/' + fileName).mtime.getTime()
+                    };
+                })
+                    .sort(function (a, b) {
+                        return a.time - b.time;
+                    })
+                    .map(function (v) {
+                        return `${imagesPath}/${v.name}`;
+                    })
+                    .slice(-150);
+
+                console.log(files);
+
+                if (files.length > 1) {
+                    files.pop();
+                }
+
+                console.log(files);
+
+                if (files.length > 0) {
+                    createVideo(files, gifPath)
+                        .then(console.log);
+                }
+            });
+        } catch (e) {
+            console.error(e);
+        }
+    }
+};
+
+(async () => {
+    await createGifs();
+
+    cron.schedule('*/30 * * * *', createGifs);
+})();
+
+
