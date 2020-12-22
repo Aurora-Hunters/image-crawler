@@ -12,4 +12,5 @@ services:
     ports:
       - '8850:8080'
     volumes:
-      - './images:/web'
+      - './images:/web/images'
+      - './gifs:/web/gifs'
