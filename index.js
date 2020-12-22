@@ -44,28 +44,64 @@ const SOURCES = [
     {
         name: 'tesis',
         url: 'https://tesis.lebedev.ru/upload_test/files/fc.png'
+    },
+    {
+        name: 'solar-eit_171',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_171/512/latest.jpg'
+    },
+    {
+        name: 'solar-eit_195',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_195/512/latest.jpg'
+    },
+    {
+        name: 'solar-eit_284',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_284/512/latest.jpg'
+    },
+    {
+        name: 'solar-eit_304',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_304/512/latest.jpg'
+    },
+    {
+        name: 'solar-hmi_igr',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/hmi_igr/512/latest.jpg'
+    },
+    {
+        name: 'solar-hmi_mag',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/hmi_mag/512/latest.jpg'
+    },
+    {
+        name: 'solar-c2',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/c2/512/latest.jpg'
+    },
+    {
+        name: 'solar-c3',
+        url: 'https://sohowww.nascom.nasa.gov/data/realtime/c3/512/latest.jpg'
     }
-]
+];
 
 const getLatestImage = function (url, pathToSave) {
     url = `${url}?t=${Date.now()}`;
+
     return downloadImage(url, pathToSave);
-}
+};
 
 const generatePath = function (name) {
     const date = new Date();
     const datestamp = `${date.getFullYear()}-${(date.getMonth() + 1) < 10 ? '0' : ''}${date.getMonth() + 1}-${date.getDate() < 10 ? '0' : ''}${date.getDate()}-${date.getHours() < 10 ? '0' : ''}${date.getHours()}-${date.getMinutes() < 10 ? '0' : ''}${date.getMinutes()}`;
 
+    const imagesDir = getImagesDir();
 
-    if (!fs.existsSync(path.join(getImagesDir(), name))) {
-        fs.mkdirSync(path.join(getImagesDir(), name), { recursive: true });
+    if (!fs.existsSync(path.join(imagesDir, name))) {
+        fs.mkdirSync(path.join(imagesDir, name), { recursive: true });
     }
 
-    return path.join(getImagesDir(), name, `${datestamp}.jpg`);
-}
+    return path.join(imagesDir, name, `${datestamp}.jpg`);
+};
 
 cron.schedule('* * * * *', async () => {
-    SOURCES.forEach(source => {
-        getLatestImage(source.url, generatePath(source.name));
-    });
+    for (let i = 0; i < SOURCES.length; i++) {
+        console.log(`Downloading... ${SOURCES[i].name} ${SOURCES[i].url}`);
+
+        await getLatestImage(SOURCES[i].url, generatePath(SOURCES[i].name));
+    }
 });
