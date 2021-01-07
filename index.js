@@ -142,10 +142,10 @@ const createGifs = async () => {
         const gifPath = generateGifsPath(SOURCES[i].name);
         const imagesPath = path.join(__dirname, 'images', SOURCES[i].name)
 
-        console.log(gifPath);
-
         try {
             await fs.readdir(imagesPath, async function (err, files) {
+                if (!files) return;
+
                 console.log(`Creating a gif for ${SOURCES[i].name}`);
 
                 files = files.map(function (fileName) {
