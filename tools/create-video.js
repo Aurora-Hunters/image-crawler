@@ -31,9 +31,13 @@ const options = {
  */
 module.exports = function (imagesList, outputFile) {
     return new Promise((resolve, reject) => {
-        videoshow(imagesList,options)
-            .save(outputFile)
-            .on('error', reject)
-            .on('end', resolve)
+        try {
+            videoshow(imagesList, options)
+                .save(outputFile)
+                .on('error', reject)
+                .on('end', resolve)
+        } catch (e) {
+            reject(e);
+        }
     });
 }

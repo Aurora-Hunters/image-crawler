@@ -6,6 +6,20 @@ const downloadImage = require('./tools/download-image');
 const createVideo = require('./tools/create-video');
 const removeDuplicatedFiles = require('./tools/delete-duplicate-files');
 
+const SOLAR_SHOTS = [
+    '0094',
+    '0131',
+    '0171',
+    '0193',
+    '0211',
+    '0304',
+    '0335',
+    '1600',
+    '1700',
+    'HMIIF',
+    'HMIBC'
+]
+
 const SOURCES = [
     {
         name: 'svalbard',
@@ -48,42 +62,17 @@ const SOURCES = [
         url: 'https://tesis.lebedev.ru/upload_test/files/fc.png'
     },
     {
-        name: 'solar-eit_171',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_171/512/latest.jpg'
-    },
-    {
-        name: 'solar-eit_195',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_195/512/latest.jpg'
-    },
-    {
-        name: 'solar-eit_284',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_284/512/latest.jpg'
-    },
-    {
-        name: 'solar-eit_304',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/eit_304/512/latest.jpg'
-    },
-    {
-        name: 'solar-hmi_igr',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/hmi_igr/512/latest.jpg'
-    },
-    {
-        name: 'solar-hmi_mag',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/hmi_mag/512/latest.jpg'
-    },
-    {
-        name: 'solar-c2',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/c2/512/latest.jpg'
-    },
-    {
-        name: 'solar-c3',
-        url: 'https://sohowww.nascom.nasa.gov/data/realtime/c3/512/latest.jpg'
-    },
-    {
         name: 'geospace-1-day',
         url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'
     }
 ];
+
+SOLAR_SHOTS.forEach(element => {
+    SOURCES.push({
+        name: `solar-${element}`,
+        url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
+    })
+})
 
 const getLatestImage = function (url, pathToSave) {
     url = `${url}?t=${Date.now()}`;
@@ -162,17 +151,14 @@ const createGifs = async () => {
                     })
                     .slice(-150);
 
-                console.log(files);
-
                 if (files.length > 1) {
                     files.pop();
                 }
 
-                console.log(files);
-
                 if (files.length > 0) {
                     createVideo(files, gifPath)
-                        .then(console.log);
+                        .then(console.log)
+                        .catch(console.error);
                 }
             });
         } catch (e) {
