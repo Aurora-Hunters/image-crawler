@@ -64,7 +64,11 @@ const SOURCES = [
     {
         name: 'geospace-1-day',
         url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'
-    }
+    },
+    {
+        name: 'swpc-solar-synoptic-map',
+        url: 'https://services.swpc.noaa.gov/images/synoptic-map.jpg'
+    },
 ];
 
 SOLAR_SHOTS.forEach(element => {
