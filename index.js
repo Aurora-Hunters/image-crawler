@@ -69,18 +69,18 @@ const SOURCES = [
         name: 'swpc-solar-synoptic-map',
         url: 'https://services.swpc.noaa.gov/images/synoptic-map.jpg'
     },
-    {
-        name: 'space-weather',
-        url: 'https://services.swpc.noaa.gov/images/swx-overview-large.gif'
-    },
+    // {
+    //     name: 'space-weather',
+    //     url: 'https://services.swpc.noaa.gov/images/swx-overview-large.gif'
+    // },
 ];
 
-SOLAR_SHOTS.forEach(element => {
-    SOURCES.push({
-        name: `solar-${element}`,
-        url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
-    })
-})
+// SOLAR_SHOTS.forEach(element => {
+//     SOURCES.push({
+//         name: `solar-${element}`,
+//         url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
+//     })
+// })
 
 const getLatestImage = function (url, pathToSave) {
     url = `${url}?t=${Date.now()}`;
