@@ -114,13 +114,14 @@ const generateGifsPath = function (name) {
 /**
  * Get images
  */
-cron.schedule('* * * * *', async () => {
-    for (let i = 0; i < SOURCES.length; i++) {
-        console.log(`Downloading... ${SOURCES[i].name} ${SOURCES[i].url}`);
+const getImages = async () => {
 
-        const imagePath = generateImagesPath(SOURCES[i].name);
+    for await (const sources of SOURCES) {
+        console.log(`Downloading... ${sources.name} ${sources.url}`);
 
-        await getLatestImage(SOURCES[i].url, imagePath);
+        const imagePath = generateImagesPath(sources.name);
+
+        await getLatestImage(sources.url, imagePath);
 
         removeDuplicatedFiles(path.dirname(imagePath));
 
@@ -128,22 +129,22 @@ cron.schedule('* * * * *', async () => {
             fs.unlinkSync(path.join(path.dirname(imagePath), '.DS_Store'))
         } catch (e) {}
     }
-});
+}
 
 /**
  * Create gifs
  */
 
 const createGifs = async () => {
-    for (let i = 0; i < SOURCES.length; i++) {
-        const gifPath = generateGifsPath(SOURCES[i].name);
-        const imagesPath = path.join(__dirname, 'images', SOURCES[i].name)
+    for await (const sources of SOURCES) {
+        const gifPath = generateGifsPath(sources.name);
+        const imagesPath = path.join(__dirname, 'images', sources.name)
 
         try {
             await fs.readdir(imagesPath, async function (err, files) {
                 if (!files) return;
 
-                console.log(`Creating a gif for ${SOURCES[i].name}`);
+                console.log(`Creating a gif for ${sources.name}`);
 
                 files = files.map(function (fileName) {
                     return {
@@ -176,7 +177,10 @@ const createGifs = async () => {
 };
 
 (async () => {
-    await createGifs();
+    await getImages();
+    // await createGifs();
+
+    cron.schedule('* * * * *', getImages);
 
     cron.schedule('*/30 * * * *', createGifs);
 })();
