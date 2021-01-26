@@ -61,26 +61,26 @@ const SOURCES = [
         name: 'tesis',
         url: 'https://tesis.lebedev.ru/upload_test/files/fc.png'
     },
-    {
-        name: 'geospace-1-day',
-        url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'
-    },
-    {
-        name: 'swpc-solar-synoptic-map',
-        url: 'https://services.swpc.noaa.gov/images/synoptic-map.jpg'
-    },
+    // {
+    //     name: 'geospace-1-day',
+    //     url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'
+    // },
+    // {
+    //     name: 'swpc-solar-synoptic-map',
+    //     url: 'https://services.swpc.noaa.gov/images/synoptic-map.jpg'
+    // },
     // {
     //     name: 'space-weather',
     //     url: 'https://services.swpc.noaa.gov/images/swx-overview-large.gif'
     // },
 ];
 
-// SOLAR_SHOTS.forEach(element => {
-//     SOURCES.push({
-//         name: `solar-${element}`,
-//         url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
-//     })
-// })
+SOLAR_SHOTS.forEach(element => {
+    SOURCES.push({
+        name: `solar-${element}`,
+        url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
+    })
+})
 
 const getLatestImage = function (url, pathToSave) {
     url = `${url}?t=${Date.now()}`;
@@ -177,10 +177,10 @@ const createGifs = async () => {
 };
 
 (async () => {
-    await getImages();
+    // await getImages();
     // await createGifs();
 
-    cron.schedule('* * * * *', getImages);
+    // cron.schedule('* * * * *', getImages);
 
     cron.schedule('*/30 * * * *', createGifs);
 })();
