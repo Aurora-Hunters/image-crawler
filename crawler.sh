@@ -38,4 +38,6 @@ do
    echo "To: $IMAGE_PATH"
 
    curl ${vars[1]}  --create-dirs --output $IMAGE_PATH
+
+   chmod 744 $IMAGE_PATH
 done
