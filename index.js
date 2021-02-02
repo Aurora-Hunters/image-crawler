@@ -158,7 +158,7 @@ const createGifs = async () => {
                     .map(function (v) {
                         return `${imagesPath}/${v.name}`;
                     })
-                    .slice(-180);
+                    .slice(-900);
 
                 if (files.length > 1) {
                     files.pop();
@@ -178,7 +178,7 @@ const createGifs = async () => {
 
 (async () => {
     // await getImages();
-    // await createGifs();
+    await createGifs();
 
     // cron.schedule('* * * * *', getImages);
 
