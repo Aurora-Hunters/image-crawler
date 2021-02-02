@@ -136,44 +136,98 @@ const getImages = async () => {
  */
 
 const createGifs = async () => {
-    for await (const sources of SOURCES) {
-        const gifPath = generateGifsPath(sources.name);
-        const imagesPath = path.join(__dirname, 'images', sources.name)
 
-        try {
-            await fs.readdir(imagesPath, async function (err, files) {
-                if (!files) return;
-
-                console.log(`Creating a gif for ${sources.name}`);
-
-                files = files.map(function (fileName) {
-                    return {
-                        name: fileName,
-                        time: fs.statSync(imagesPath + '/' + fileName).mtime.getTime()
-                    };
-                })
-                    .sort(function (a, b) {
-                        return a.time - b.time;
-                    })
-                    .map(function (v) {
-                        return `${imagesPath}/${v.name}`;
-                    })
-                    .slice(-900, -1);
-
-                if (files.length > 1) {
-                    files.pop();
-                }
-
-                if (files.length > 0) {
-                    createVideo(files, gifPath)
-                        .then(console.log)
-                        .catch(console.error);
-                }
-            });
-        } catch (e) {
-            console.error(e);
+    (async  () => {
+        for (const source of SOURCES) {
+            await composeGif(source);
         }
+    })();
+
+    function composeGif(source) {
+        return new Promise(async (resolve, reject) => {
+            const gifPath = generateGifsPath(source.name);
+            const imagesPath = path.join(__dirname, 'images', source.name)
+
+            try {
+                await fs.readdir(imagesPath, function (err, files) {
+                    if (!files) {
+                        resolve();
+                        return;
+                    }
+
+                    console.log(`Creating a gif for ${source.name}`);
+
+                    files = files.map(function (fileName) {
+                        return {
+                            name: fileName,
+                            time: fs.statSync(imagesPath + '/' + fileName).mtime.getTime()
+                        };
+                    })
+                        .sort(function (a, b) {
+                            return a.time - b.time;
+                        })
+                        .map(function (v) {
+                            return `${imagesPath}/${v.name}`;
+                        })
+                        .slice(-900, -1);
+
+                    if (files.length > 1) {
+                        files.pop();
+                    }
+
+                    if (files.length > 0) {
+                        createVideo(files, gifPath)
+                            .then(resolve)
+                            .catch(reject);
+                    } else {
+                        resolve();
+                    }
+                });
+            } catch (e) {
+                console.error(reject);
+            }
+        });
     }
+
+
+    // for await (const source of SOURCES) {
+    //     const gifPath = generateGifsPath(source.name);
+    //     const imagesPath = path.join(__dirname, 'images', source.name)
+    //
+    //     try {
+    //         await fs.readdir(imagesPath, async function (err, files) {
+    //             if (!files) return;
+    //
+    //             console.log(`Creating a gif for ${source.name}`);
+    //
+    //             files = files.map(function (fileName) {
+    //                 return {
+    //                     name: fileName,
+    //                     time: fs.statSync(imagesPath + '/' + fileName).mtime.getTime()
+    //                 };
+    //             })
+    //                 .sort(function (a, b) {
+    //                     return a.time - b.time;
+    //                 })
+    //                 .map(function (v) {
+    //                     return `${imagesPath}/${v.name}`;
+    //                 })
+    //                 .slice(-900, -1);
+    //
+    //             if (files.length > 1) {
+    //                 files.pop();
+    //             }
+    //
+    //             if (files.length > 0) {
+    //                 createVideo(files, gifPath)
+    //                     .then(console.log)
+    //                     .catch(console.error);
+    //             }
+    //         });
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // }
 };
 
 (async () => {
