@@ -28,6 +28,7 @@ declare -a SOURCES=(
   "solar-1700 https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_1700.jpg"
   "solar-HMIIF https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg"
   "solar-HMIBC https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIBC.jpg"
+  "solar-211193171 https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_211193171.jpg"
 )
 
 for i in "${SOURCES[@]}"

@@ -17,7 +17,8 @@ const SOLAR_SHOTS = [
     '1600',
     '1700',
     'HMIIF',
-    'HMIBC'
+    'HMIBC',
+    '211193171'
 ]
 
 const SOURCES = [
