@@ -70,6 +70,43 @@ const SOURCES = [
         name: 'hankasalmi',
         url: 'https://aurorainfo.eu/aurora-live-cameras/hankasalmi-finland-all-sky-aurora-live-camera.jpg'
     },
+
+
+    {
+        name: 'lasco-c2',
+        url: 'https://services.swpc.noaa.gov/images/animations/lasco-c2/latest.jpg'
+    },
+    {
+        name: 'lasco-c3',
+        url: 'https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg'
+    },
+
+    {
+        name: 'enlil',
+        url: 'https://services.swpc.noaa.gov/images/animations/enlil/latest.jpg'
+    },
+
+    {
+        name: 'geo-density',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png'
+    },
+    {
+        name: 'geo-velocity',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png'
+    },
+    {
+        name: 'geo-pressure',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/pressure/latest.png'
+    },
+    {
+        name: 'geo-polar-lt',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/polar_lt/latest.png'
+    },
+    {
+        name: 'geo-global',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/global/latest.png'
+    },
+
     // {
     //     name: 'geospace-1-day',
     //     url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'

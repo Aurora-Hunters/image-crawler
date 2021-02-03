@@ -29,6 +29,17 @@ declare -a SOURCES=(
   "solar-HMIIF https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIIF.jpg"
   "solar-HMIBC https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_HMIBC.jpg"
   "solar-211193171 https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_211193171.jpg"
+
+  "lasco-c2 https://services.swpc.noaa.gov/images/animations/lasco-c2/latest.jpg"
+  "lasco-c3 https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg"
+
+  "enlil https://services.swpc.noaa.gov/images/animations/enlil/latest.jpg"
+
+  "geo-density https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png"
+  "geo-velocity https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png"
+  "geo-pressure https://services.swpc.noaa.gov/images/animations/geospace/pressure/latest.png"
+  "geo-polar-lt https://services.swpc.noaa.gov/images/animations/geospace/polar_lt/latest.png"
+  "geo-global https://services.swpc.noaa.gov/images/animations/geospace/global/latest.png"
 )
 
 for i in "${SOURCES[@]}"
