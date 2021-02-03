@@ -61,6 +61,14 @@ const SOURCES = [
         name: 'tesis',
         url: 'https://tesis.lebedev.ru/upload_test/files/fc.png'
     },
+    {
+        name: 'sodankyla',
+        url: 'https://aurorainfo.eu/aurora-live-cameras/sodankyla-finland-all-sky-aurora-live-camera.jpg'
+    },
+    {
+        name: 'hankasalmi',
+        url: 'https://aurorainfo.eu/aurora-live-cameras/hankasalmi-finland-all-sky-aurora-live-camera.jpg'
+    },
     // {
     //     name: 'geospace-1-day',
     //     url: 'https://services.swpc.noaa.gov/images/geospace-1-day.png'

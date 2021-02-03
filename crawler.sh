@@ -12,6 +12,8 @@ declare -a SOURCES=(
   "porjus-east https://aurorainfo.eu/aurora-live-cameras/porjus-sweden-east-view-sweden-aurora-live-camera.jpg"
   "skibotn https://aurorainfo.eu/aurora-live-cameras/skibotn-norway-all-sky-aurora-live-camera.jpg"
   "ramfjordmoen https://aurorainfo.eu/aurora-live-cameras/ramfjordmoen-norway-all-sky-aurora-live-camera.jpg"
+  "sodankyla https://aurorainfo.eu/aurora-live-cameras/sodankyla-finland-all-sky-aurora-live-camera.jpg"
+  "hankasalmi https://aurorainfo.eu/aurora-live-cameras/hankasalmi-finland-all-sky-aurora-live-camera.jpg"
   "tesis https://tesis.lebedev.ru/upload_test/files/fc.png"
   "swpc-solar-synoptic-map https://services.swpc.noaa.gov/images/synoptic-map.jpg"
 
