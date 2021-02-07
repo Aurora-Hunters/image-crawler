@@ -227,7 +227,7 @@ const createGifs = async () => {
                         .map(function (v) {
                             return `${imagesPath}/${v.name}`;
                         })
-                        .slice(-360, -1);
+                        .slice(-180, -1);
 
                     if (files.length > 1) {
                         files.pop();
