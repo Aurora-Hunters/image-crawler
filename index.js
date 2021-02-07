@@ -169,13 +169,22 @@ const getImages = async () => {
 
         await getLatestImage(sources.url, imagePath);
 
-        removeDuplicatedFiles(path.dirname(imagePath));
+        // await removeDuplicatedFiles(path.dirname(imagePath));
 
-        try {
-            fs.unlinkSync(path.join(path.dirname(imagePath), '.DS_Store'))
-        } catch (e) {}
+        // try {
+        //     fs.unlinkSync(path.join(path.dirname(imagePath), '.DS_Store'))
+        // } catch (e) {}
     }
 }
+
+const removeBadFiles = async (dirname) => {
+    await removeDuplicatedFiles(dirname);
+
+    try {
+        fs.unlinkSync(path.join(path.dirname(imagePath), '.DS_Store'))
+    } catch (e) {}
+}
+
 
 /**
  * Create gifs
@@ -195,8 +204,11 @@ const createGifs = async () => {
             const imagesPath = path.join(__dirname, 'images', source.name)
 
             try {
-                await fs.readdir(imagesPath, function (err, files) {
+                await removeBadFiles(imagesPath);
+
+                fs.readdir(imagesPath, function (err, files) {
                     if (!files) {
+                        console.log('No files were found');
                         resolve();
                         return;
                     }
@@ -215,7 +227,7 @@ const createGifs = async () => {
                         .map(function (v) {
                             return `${imagesPath}/${v.name}`;
                         })
-                        .slice(-360, -1);
+                        .slice(-360);
 
                     if (files.length > 1) {
                         files.pop();
@@ -223,9 +235,13 @@ const createGifs = async () => {
 
                     if (files.length > 0) {
                         createVideo(files, gifPath)
-                            .then(resolve)
+                            .then(() => {
+                                console.log('Done!');
+                                resolve();
+                            })
                             .catch(reject);
                     } else {
+                        console.log('Files length not more 0');
                         resolve();
                     }
                 });
@@ -234,50 +250,11 @@ const createGifs = async () => {
             }
         });
     }
-
-
-    // for await (const source of SOURCES) {
-    //     const gifPath = generateGifsPath(source.name);
-    //     const imagesPath = path.join(__dirname, 'images', source.name)
-    //
-    //     try {
-    //         await fs.readdir(imagesPath, async function (err, files) {
-    //             if (!files) return;
-    //
-    //             console.log(`Creating a gif for ${source.name}`);
-    //
-    //             files = files.map(function (fileName) {
-    //                 return {
-    //                     name: fileName,
-    //                     time: fs.statSync(imagesPath + '/' + fileName).mtime.getTime()
-    //                 };
-    //             })
-    //                 .sort(function (a, b) {
-    //                     return a.time - b.time;
-    //                 })
-    //                 .map(function (v) {
-    //                     return `${imagesPath}/${v.name}`;
-    //                 })
-    //                 .slice(-900, -1);
-    //
-    //             if (files.length > 1) {
-    //                 files.pop();
-    //             }
-    //
-    //             if (files.length > 0) {
-    //                 createVideo(files, gifPath)
-    //                     .then(console.log)
-    //                     .catch(console.error);
-    //             }
-    //         });
-    //     } catch (e) {
-    //         console.error(e);
-    //     }
-    // }
 };
 
 (async () => {
     // await getImages();
+
     await createGifs();
 
     // cron.schedule('* * * * *', getImages);
