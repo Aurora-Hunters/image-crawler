@@ -3,6 +3,8 @@
 DOWNLOADS_DIR=$(dirname "$0")/images
 ARCHIVES_DIR=$(dirname "$0")/archives
 
+rm -rf $ARCHIVES_DIR
+
 mkdir -p $ARCHIVES_DIR
 chmod 777 $ARCHIVES_DIR
 
@@ -63,5 +65,5 @@ do
 
   echo "Done $ARCHIVE_PATH"
 
-   chmod 777 $ARCHIVE_PATH
+  chmod 777 $ARCHIVE_PATH
 done
