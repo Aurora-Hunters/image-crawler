@@ -254,12 +254,10 @@ const createGifs = async () => {
 
 (async () => {
     // await getImages();
-
-    await createGifs();
-
     // cron.schedule('* * * * *', getImages);
 
-    cron.schedule('0 5 * * *', createGifs);
+    // await createGifs();
+    // cron.schedule('0 5 * * *', createGifs);
 })();
 
 

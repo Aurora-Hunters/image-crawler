@@ -106,5 +106,6 @@ dist
 .idea/
 .DS_Store
 
+archives/
 images/
 gifs/
