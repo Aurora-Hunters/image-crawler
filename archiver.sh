@@ -4,7 +4,7 @@ DOWNLOADS_DIR=$(dirname "$0")/images
 ARCHIVES_DIR=$(dirname "$0")/archives
 
 mkdir -p $ARCHIVES_DIR
-chmod 744 $ARCHIVES_DIR
+chmod 777 $ARCHIVES_DIR
 
 declare -a SOURCES=(
   "kiruna https://aurorainfo.eu/aurora-live-cameras/kiruna-sweden-all-sky-aurora-live-camera.jpg"
@@ -63,5 +63,5 @@ do
 
   echo "Done $ARCHIVE_PATH"
 
-   chmod 744 $ARCHIVE_PATH
+   chmod 777 $ARCHIVE_PATH
 done

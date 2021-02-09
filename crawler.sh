@@ -1,6 +1,9 @@
 #!/bin/bash
 
-DOWNLOADS_DIR=images
+DOWNLOADS_DIR=$(dirname "$0")/images
+
+mkdir -p $DOWNLOADS_DIR
+chmod 777 $DOWNLOADS_DIR
 
 declare -a SOURCES=(
   "kiruna https://aurorainfo.eu/aurora-live-cameras/kiruna-sweden-all-sky-aurora-live-camera.jpg"
@@ -46,7 +49,7 @@ for i in "${SOURCES[@]}"
 do
    vars=($i)
 
-   IMAGE_PATH=$(dirname "$0")/$DOWNLOADS_DIR/${vars[0]}/$(date '+%Y-%m-%d-%H-%M-%S').jpg
+   IMAGE_PATH=$DOWNLOADS_DIR/${vars[0]}/$(date '+%Y-%m-%d-%H-%M-%S').jpg
 
    echo "Downloading $i"
    echo "To: $IMAGE_PATH"
