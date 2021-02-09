@@ -13,6 +13,6 @@ services:
       - '8850:8080'
     volumes:
       - './images:/web/images'
-      - './gifs:/web/gifs'
+#      - './gifs:/web/gifs'
       - './archives:/web/archives'
 
