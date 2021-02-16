@@ -50,8 +50,8 @@ do
   ARCHIVE_PATH=$ARCHIVES_DIR/${vars[0]}.tar
   echo "Creating archive for ${vars[0]}"
 
-  cd $DOWNLOADS_DIR/${vars[0]}
-  find *.jpg -type f -newermt "-24 hours" -ls -exec tar -C $DOWNLOADS_DIR/${vars[0]} -rvf $ARCHIVE_PATH {} \;
+  cd $DOWNLOADS_DIR
+  find ${vars[0]}/*.jpg -type f -newermt "-24 hours" -ls -exec tar -rvf $ARCHIVE_PATH {} \;
 
   echo "Done $ARCHIVE_PATH"
   chmod 777 $ARCHIVE_PATH
@@ -70,8 +70,9 @@ do
   ARCHIVE_PATH=$ARCHIVES_DIR/${vars[0]}.tar
   echo "Creating archive for ${vars[0]}"
 
-  cd $DOWNLOADS_DIR/${vars[0]}
-  find *.jpg -type f -newermt "-7 days" -ls -exec tar -C $DOWNLOADS_DIR/${vars[0]} -rvf $ARCHIVE_PATH {} \;
+  cd $DOWNLOADS_DIR
+
+  find ${vars[0]}/*.jpg -type f -newermt "-7 days" -ls -exec tar -rvf $ARCHIVE_PATH {} \;
 
   echo "Done $ARCHIVE_PATH"
   chmod 777 $ARCHIVE_PATH
