@@ -87,6 +87,23 @@ const SOURCES = [
     },
 
     {
+        name: 'stereo-195',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_195_latest.jpg'
+    },
+    {
+        name: 'stereo-171',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_171_latest.jpg'
+    },
+    {
+        name: 'stereo-284',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_284_latest.jpg'
+    },
+    {
+        name: 'stereo-304',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_304_latest.jpg'
+    },
+
+    {
         name: 'geo-density',
         url: 'https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png'
     },

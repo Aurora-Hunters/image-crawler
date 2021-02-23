@@ -36,6 +36,11 @@ declare -a SOURCES=(
   "lasco-c2 https://services.swpc.noaa.gov/images/animations/lasco-c2/latest.jpg"
   "lasco-c3 https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg"
 
+  "stereo-195 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_195_latest.jpg"
+  "stereo-171 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_171_latest.jpg"
+  "stereo-284 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_284_latest.jpg"
+  "stereo-304 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_304_latest.jpg"
+
   "enlil https://services.swpc.noaa.gov/images/animations/enlil/latest.jpg"
 
   "geo-density https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png"
