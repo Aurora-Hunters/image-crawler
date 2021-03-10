@@ -57,12 +57,12 @@ do
    IMAGE_NAME=$(date '+%Y-%m-%d-%H-%M-%S').jpg
 
    IMAGE_PATH=$DOWNLOADS_DIR/${vars[0]}/$IMAGE_NAME
-   IMAGE_LATEST_PATH=latest.jpg
+   IMAGE_LATEST_PATH=$DOWNLOADS_DIR/${vars[0]}/latest.jpg
 
    echo "Downloading $i"
    echo "To: $IMAGE_PATH"
 
-   curl ${vars[1]} --connect-timeout 10 --create-dirs --output $IMAGE_PATH && ln -sf $IMAGE_NAME $IMAGE_LATEST_PATH
+   curl ${vars[1]} --connect-timeout 10 --create-dirs --output $IMAGE_PATH && rm $IMAGE_LATEST_PATH && ln -sf $IMAGE_NAME $IMAGE_LATEST_PATH
 
    chmod 777 $IMAGE_PATH $IMAGE_LATEST_PATH
 done
