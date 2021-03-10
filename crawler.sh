@@ -62,7 +62,7 @@ do
    echo "Downloading $i"
    echo "To: $IMAGE_PATH"
 
-   curl ${vars[1]} --connect-timeout 10 --create-dirs --output $IMAGE_PATH && ln -s $IMAGE_NAME $IMAGE_LATEST_PATH
+   curl ${vars[1]} --connect-timeout 10 --create-dirs --output $IMAGE_PATH && rm $IMAGE_LATEST_PATH && ln -s $IMAGE_NAME $IMAGE_LATEST_PATH
 
    chmod 777 $IMAGE_PATH $IMAGE_LATEST_PATH
 done
