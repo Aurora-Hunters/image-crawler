@@ -46,10 +46,10 @@ const SOURCES = [
         name: 'abisko',
         url: 'https://aurorainfo.eu/aurora-live-cameras/abisko-lights-over-lapland-sweden-aurora-live-camera.jpg'
     },
-    // {
-    //     name: 'abisko-east',
-    //     url: 'https://aurorainfo.eu/aurora-live-cameras/abisko-lights-over-lapland-sweden-aurora-live-camera-east.jpg'
-    // },
+    {
+        name: 'abisko-east',
+        url: 'https://aurorainfo.eu/aurora-live-cameras/abisko-lights-over-lapland-sweden-aurora-live-camera-east.jpg'
+    },
     {
         name: 'skibotn',
         url: 'https://aurorainfo.eu/aurora-live-cameras/skibotn-norway-all-sky-aurora-live-camera.jpg'
@@ -58,10 +58,10 @@ const SOURCES = [
         name: 'ramfjordmoen',
         url: 'https://aurorainfo.eu/aurora-live-cameras/ramfjordmoen-norway-all-sky-aurora-live-camera.jpg'
     },
-    // {
-    //     name: 'tesis',
-    //     url: 'https://tesis.lebedev.ru/upload_test/files/fc.png'
-    // },
+    {
+        name: 'tesis',
+        url: 'https://tesis.lebedev.ru/upload_test/files/fc.png'
+    },
     {
         name: 'sodankyla',
         url: 'https://aurorainfo.eu/aurora-live-cameras/sodankyla-finland-all-sky-aurora-live-camera.jpg'
@@ -72,57 +72,57 @@ const SOURCES = [
     },
 
 
-    // {
-    //     name: 'lasco-c2',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/lasco-c2/latest.jpg'
-    // },
-    // {
-    //     name: 'lasco-c3',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg'
-    // },
-    //
-    // {
-    //     name: 'enlil',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/enlil/latest.jpg'
-    // },
-    //
-    // {
-    //     name: 'stereo-195',
-    //     url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_195_latest.jpg'
-    // },
-    // {
-    //     name: 'stereo-171',
-    //     url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_171_latest.jpg'
-    // },
-    // {
-    //     name: 'stereo-284',
-    //     url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_284_latest.jpg'
-    // },
-    // {
-    //     name: 'stereo-304',
-    //     url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_304_latest.jpg'
-    // },
-    //
-    // {
-    //     name: 'geo-density',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png'
-    // },
-    // {
-    //     name: 'geo-velocity',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png'
-    // },
-    // {
-    //     name: 'geo-pressure',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/geospace/pressure/latest.png'
-    // },
-    // {
-    //     name: 'geo-polar-lt',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/geospace/polar_lt/latest.png'
-    // },
-    // {
-    //     name: 'geo-global',
-    //     url: 'https://services.swpc.noaa.gov/images/animations/geospace/global/latest.png'
-    // },
+    {
+        name: 'lasco-c2',
+        url: 'https://services.swpc.noaa.gov/images/animations/lasco-c2/latest.jpg'
+    },
+    {
+        name: 'lasco-c3',
+        url: 'https://services.swpc.noaa.gov/images/animations/lasco-c3/latest.jpg'
+    },
+
+    {
+        name: 'enlil',
+        url: 'https://services.swpc.noaa.gov/images/animations/enlil/latest.jpg'
+    },
+
+    {
+        name: 'stereo-195',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_195_latest.jpg'
+    },
+    {
+        name: 'stereo-171',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_171_latest.jpg'
+    },
+    {
+        name: 'stereo-284',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_284_latest.jpg'
+    },
+    {
+        name: 'stereo-304',
+        url: 'https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_304_latest.jpg'
+    },
+
+    {
+        name: 'geo-density',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png'
+    },
+    {
+        name: 'geo-velocity',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png'
+    },
+    {
+        name: 'geo-pressure',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/pressure/latest.png'
+    },
+    {
+        name: 'geo-polar-lt',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/polar_lt/latest.png'
+    },
+    {
+        name: 'geo-global',
+        url: 'https://services.swpc.noaa.gov/images/animations/geospace/global/latest.png'
+    },
 
     // {
     //     name: 'geospace-1-day',
@@ -138,12 +138,12 @@ const SOURCES = [
     // },
 ];
 
-// SOLAR_SHOTS.forEach(element => {
-//     SOURCES.push({
-//         name: `solar-${element}`,
-//         url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
-//     })
-// })
+SOLAR_SHOTS.forEach(element => {
+    SOURCES.push({
+        name: `solar-${element}`,
+        url: `https://sdo.gsfc.nasa.gov/assets/img/latest/latest_1024_${element}.jpg`
+    })
+})
 
 const getLatestImage = function (url, pathToSave) {
     url = `${url}?t=${Date.now()}`;
@@ -186,7 +186,7 @@ const getImages = async () => {
 
         await getLatestImage(sources.url, imagePath);
 
-        await removeDuplicatedFiles(path.dirname(imagePath));
+        // await removeDuplicatedFiles(path.dirname(imagePath));
 
         // try {
         //     fs.unlinkSync(path.join(path.dirname(imagePath), '.DS_Store'))
@@ -244,7 +244,7 @@ const createGifs = async () => {
                         .map(function (v) {
                             return `${imagesPath}/${v.name}`;
                         })
-                        .slice(-600, -1);
+                        .slice(-180, -1);
 
                     if (files.length > 1) {
                         files.pop();
@@ -270,11 +270,11 @@ const createGifs = async () => {
 };
 
 (async () => {
-    await getImages();
-    cron.schedule('* * * * *', getImages);
+    // await getImages();
+    // cron.schedule('* * * * *', getImages);
 
-    await createGifs();
-    cron.schedule('0 * * * *', createGifs);
+    // await createGifs();
+    // cron.schedule('0 5 * * *', createGifs);
 })();
 
 
