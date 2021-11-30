@@ -6,8 +6,26 @@ mkdir -p $DOWNLOADS_DIR
 chmod 777 $DOWNLOADS_DIR
 
 declare -a SOURCES=(
-   "skib https://fox.phys.uit.no/ASC/Latest_ASC01.png"
-   "skib2 https://fox.phys.uit.no/ASC/BACC5.jpg"
+   "NOR-78-Longyearbyen http://kho.unis.no/Quicklooks/ZWO/Allsky.jpg"
+   "NOR-78-Svalbard http://kho.unis.no/Quicklooks/kho_sony.png"
+   "NOR-69-Skibotn-1 https://fox.phys.uit.no/ASC/Latest_ASC01.png"
+   "NOR-69-Skibotn-2 https://fox.phys.uit.no/ASC/BACC5.jpg"
+   "NOR-69-Ramfjord https://tromsoe-ai.cei.uec.ac.jp/~nanjo/public/aurora_alert/latest.jpg"
+
+   "FIN-69-Kevo https://space.fmi.fi/MIRACLE/ASC/ASC_keograms/tmp_KEV_keo/Allsky_KEVO.jpg"
+   "FIN-68-Muonio https://aurorasnow.fmi.fi/public_service/images/latest_MUO.jpg"
+   "FIN-67-Sodankylä https://www.sgo.fi/Data/RealTime/Kuvat/UCL.jpg"
+   "FIN-62-Nyrölä http://nyrola.jklsirius.fi/allsky/image-resize.jpg"
+   "FIN-62-Hankasalmi https://www.ursa.fi/yhd/sirius/sivut/kuvat/ImageLastFTP_AllSKY.jpg"
+   "FIN-61-Tampere https://www.ursa.fi/yhd/tampereenursa/Pics/latest_CAM-20.jpg"
+   "FIN-61-Pori https://karhunvartijat.fi/allsky/images/image-resize.jpg"
+   "FIN-60-Metsähovi https://space.fmi.fi/MIRACLE/RWC/latest_HOV.jpg"
+
+   "SWE-67-Kiruna https://www.irf.se/alis/allsky/krn/latest_medium.jpeg"
+   "SWE-66-Porjus-N https://uk.jokkmokk.jp/photo/nr4/latest.jpg"
+   "SWE-66-Porjus-W https://uk.jokkmokk.jp/photo/nr3/latest.jpg"
+   "SWE-66-Porjus-E https://uk.jokkmokk.jp/photo/nr5/latest.jpg"
+
 #  "kiruna https://aurorainfo.eu/aurora-live-cameras/kiruna-sweden-all-sky-aurora-live-camera.jpg"
 #  "svalbard https://aurorainfo.eu/aurora-live-cameras/svalbard-norway-all-sky-aurora-live-camera.jpg"
 #  "abisko https://aurorainfo.eu/aurora-live-cameras/abisko-lights-over-lapland-sweden-aurora-live-camera.jpg"
@@ -42,14 +60,6 @@ declare -a SOURCES=(
 #  "stereo-171 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_171_latest.jpg"
 #  "stereo-284 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_284_latest.jpg"
 #  "stereo-304 https://stereo.gsfc.nasa.gov/beacon/latest_256/ahead_euvi_304_latest.jpg"
-#
-#  "enlil https://services.swpc.noaa.gov/images/animations/enlil/latest.jpg"
-#
-#  "geo-density https://services.swpc.noaa.gov/images/animations/geospace/density/latest.png"
-#  "geo-velocity https://services.swpc.noaa.gov/images/animations/geospace/velocity/latest.png"
-#  "geo-pressure https://services.swpc.noaa.gov/images/animations/geospace/pressure/latest.png"
-#  "geo-polar-lt https://services.swpc.noaa.gov/images/animations/geospace/polar_lt/latest.png"
-#  "geo-global https://services.swpc.noaa.gov/images/animations/geospace/global/latest.png"
 )
 
 for i in "${SOURCES[@]}"
