@@ -34,7 +34,7 @@ export class ImageSource {
   /**
    * @param lastHours
    */
-  public async getImages(lastHours = 10): Promise<string[]> {
+  public async getImages(lastHours = 12): Promise<string[]> {
     const directoryName = this.id;
     const filesDir = path.join(Downloader.getBaseDir(), directoryName);
     const date = new Date();
