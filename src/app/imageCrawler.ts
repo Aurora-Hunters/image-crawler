@@ -73,7 +73,7 @@ export class ImageCrawler {
       if (medias.length) {
         bot.sendMediaGroup(process.env.CHANNEL_ID, medias);
       }
-    }, '0 0 */4 * * *');
+    }, '0 0 7 * * *');
     // }, '0 * * * * *');
 
     taskBuild.register();
